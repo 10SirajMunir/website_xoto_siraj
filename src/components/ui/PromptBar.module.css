@@ -1,0 +1,25 @@
+.bar {
+  display: flex; align-items: center; gap: 12px; width: 100%; height: 64px; padding: 0 8px 0 20px;
+  background: var(--white); border-radius: 999px;
+  box-shadow: var(--shadow-s), inset 0 0 0 1px var(--line);
+  transition: box-shadow .25s;
+}
+.bar:focus-within { box-shadow: var(--shadow-l), inset 0 0 0 1.5px var(--purple); }
+.spark { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--signature); animation: pulse 2.4s ease-in-out infinite; }
+.bar input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: none; font-size: 1.06rem; text-overflow: ellipsis; }
+.bar input::placeholder { color: var(--ink-2); }
+.send {
+  flex: none; display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 20px;
+  background: var(--purple); color: var(--white); border-radius: 999px; font-weight: 500;
+  transition: background-color .25s, transform .4s var(--ease);
+}
+.send:hover { background: var(--purple-deep); transform: translateY(-1px); }
+
+@keyframes pulse { 50% { transform: scale(.72); } }
+
+@media (max-width: 560px) {
+  .bar { height: 56px; padding: 0 6px 0 16px; }
+  .bar input { font-size: 1rem; }
+  .send { width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .send span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}

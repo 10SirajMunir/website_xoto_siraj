@@ -1,0 +1,29 @@
+.screen { display: flex; flex-direction: column; gap: 12px; height: 100%; padding: 22px; }
+.ask {
+  align-self: flex-end; max-width: 84%; padding: 11px 15px; background: var(--purple); color: var(--white);
+  border-radius: 18px; border-bottom-right-radius: 6px; line-height: 1.35;
+}
+.answer { padding: 18px; background: var(--white); border-radius: 18px; box-shadow: inset 0 0 0 1px var(--line); }
+.foot { margin-top: auto; text-align: center; font-size: .74rem; color: var(--ink-2); }
+.head { font-weight: 500; color: var(--purple); font-size: 1.06rem; letter-spacing: -.01em; }
+.chip { display: inline-flex; align-items: center; gap: 7px; padding: 4px 11px; border-radius: 99px; background: var(--tint-green); font-size: .8rem; font-weight: 500; }
+.chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+.big { margin-top: 12px; font-size: clamp(1.9rem, 2.9vw, 2.6rem); line-height: 1.05; font-weight: 500; color: var(--purple); }
+.rows { margin-top: 12px; }
+.row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font-size: .92rem; }
+.row span { color: var(--ink-2); }
+.row b { font-weight: 500; white-space: nowrap; }
+.row[data-strong] b { color: var(--purple); font-weight: 600; }
+.row[data-strong] span { color: var(--ink); font-weight: 500; }
+.homes { margin-top: 10px; }
+.homes li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.homes img { flex: none; width: 56px; height: 56px; border-radius: 14px; object-fit: cover; }
+.homes div { flex: 1; min-width: 0; line-height: 1.3; }
+.homes b { display: block; font-weight: 500; font-size: .94rem; }
+.homes div span { font-size: .86rem; color: var(--ink-2); }
+.monthly { flex: none; font-size: .8rem; color: var(--purple); }
+.confirm {
+  display: grid; place-items: center; height: 46px; margin-top: 14px; background: var(--purple); color: var(--white);
+  border-radius: 99px; font-weight: 500;
+}
+.center { margin-top: 10px; text-align: center; }

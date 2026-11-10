@@ -1,0 +1,83 @@
+.header {
+  position: fixed; top: 12px; left: 0; right: 0; z-index: 100; padding-inline: var(--gutter);
+  transition: transform .6s var(--ease); pointer-events: none;
+}
+.header[data-hidden] { transform: translateY(-130%); }
+.nav {
+  pointer-events: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  max-width: 1584px; margin-inline: auto; height: 60px; padding: 0 8px 0 20px;
+  background: rgba(255, 255, 255, .82); border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(92, 3, 155, .05), 0 8px 28px rgba(92, 3, 155, .06);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
+  transition: background-color .4s, box-shadow .4s;
+}
+.header[data-solid] .nav { background: rgba(255, 255, 255, .96); box-shadow: var(--shadow-s); }
+.logo { flex: none; }
+.logo img { width: 78px; height: auto; }
+
+.links { display: flex; align-items: center; gap: 2px; }
+.link, .dropBtn {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 13px; border-radius: 999px;
+  font-size: .92rem; color: var(--ink-2); white-space: nowrap; transition: color .2s, background-color .2s;
+}
+.link:hover, .dropBtn:hover, .dropBtn[aria-expanded="true"] { color: var(--purple); background: var(--tint-purple); }
+.chevron { transition: transform .3s var(--ease); }
+.dropBtn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+.drop { position: relative; }
+.panel {
+  position: absolute; top: calc(100% + 10px); left: -8px; min-width: 268px; padding: 8px;
+  background: var(--white); border-radius: var(--r-m); box-shadow: var(--shadow-l);
+  opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.98); transform-origin: 24px 0;
+  transition: opacity .2s, transform .35s var(--ease), visibility 0s .35s;
+}
+/* An invisible bridge so the pointer can travel from the button to the panel without closing it. */
+.panel::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }
+.panel[data-align="end"] { left: auto; right: -8px; transform-origin: calc(100% - 24px) 0; }
+.panel[data-open] { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .35s var(--ease); }
+.panel a {
+  display: flex; flex-direction: column; gap: 2px; padding: 11px 14px; border-radius: var(--r-s);
+  transition: background-color .2s;
+}
+.panel a:hover, .panel a:focus-visible { background: var(--tint-purple); }
+.panel b { font-weight: 500; font-size: .94rem; color: var(--ink); }
+.panel a:hover b { color: var(--purple); }
+.panel small { font-size: .8rem; color: var(--ink-2); }
+
+.actions { display: flex; align-items: center; gap: 4px; flex: none; }
+.actionBtn { min-height: 44px; padding: 0 18px; font-size: .92rem; }
+.lang { min-height: 44px; padding: 0 12px; font: 500 .82rem var(--mono); color: var(--ink-2); border-radius: 999px; }
+.lang:hover { color: var(--purple); background: var(--tint-purple); }
+
+.menuBtn { display: none; position: relative; width: 44px; height: 44px; border-radius: 50%; background: var(--tint-purple); color: var(--purple); }
+.menuBtn i { position: absolute; left: 14px; right: 14px; top: 21px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .5s var(--ease); }
+.menuBtn i:first-child { transform: translateY(-4px); }
+.menuBtn i + i { transform: translateY(4px); }
+.menuBtn[data-open] i:first-child { transform: rotate(45deg); }
+.menuBtn[data-open] i + i { transform: rotate(-45deg); }
+
+.menu {
+  position: fixed; inset: 0; z-index: 90; background: var(--white); visibility: hidden; opacity: 0;
+  padding: 104px var(--gutter) 32px; overflow-y: auto;
+  transition: opacity .35s, visibility 0s .35s;
+}
+.menu[data-open] { visibility: visible; opacity: 1; transition: opacity .35s; }
+.menuGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 40px; max-width: 1584px; margin-inline: auto; }
+.menu h2 { font: 500 .78rem var(--mono); color: var(--ink-2); margin-bottom: 12px; }
+.menuMain { grid-column: 1 / -1; }
+.menuMain a {
+  display: block; padding: 2px 0; font-size: clamp(2rem, 7vw, 3.4rem); line-height: 1.12; letter-spacing: -.04em;
+  font-weight: 500; color: var(--purple);
+}
+.menuSub a { display: flex; align-items: center; min-height: 44px; font-size: 1.04rem; }
+.menuSub a:hover { color: var(--purple); }
+
+@media (max-width: 1240px) {
+  .links, .lang, .login { display: none; }
+  .menuBtn { display: block; }
+  .nav { height: 56px; padding-left: 16px; }
+}
+@media (max-width: 560px) {
+  .contact { display: none; }
+  .menuGrid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "xoto-website-design",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 5174",
+    "build": "next build",
+    "start": "next start --port 5174",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "next": "^16.4.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.4"
+  }
+}

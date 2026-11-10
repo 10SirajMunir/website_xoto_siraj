@@ -1,0 +1,17 @@
+.section { overflow: clip; background: var(--tint-green); }
+.head { text-align: center; }
+.head > p:first-child { justify-content: center; }
+.title { margin: 18px auto 18px; font-size: var(--fs-h1); }
+.head :global(.lead) { max-width: 36em; margin-inline: auto; }
+.marquee { margin-top: clamp(40px, 6vw, 84px); display: grid; gap: 4px; }
+.row { display: flex; width: max-content; animation: slide 46s linear infinite; }
+.row[data-reverse] { animation-direction: reverse; animation-duration: 54s; }
+.row:hover { animation-play-state: paused; }
+.set { display: flex; flex: none; }
+.set span {
+  padding-inline: clamp(16px, 2.2vw, 36px); font-size: clamp(2rem, 5vw, 4.6rem); line-height: 1.35;
+  font-weight: 500; letter-spacing: -.03em; color: var(--purple); white-space: nowrap;
+}
+.row:nth-child(2) .set span { color: rgba(92, 3, 155, .42); }
+
+@keyframes slide { to { transform: translate3d(-50%, 0, 0); } }

@@ -1,0 +1,13 @@
+.section { text-align: center; padding-block: clamp(110px, 16vw, 240px); }
+.text {
+  margin: 28px auto 0; max-width: 18em; font-size: var(--fs-h1); font-weight: 500; line-height: 1.12; letter-spacing: -.04em;
+}
+.word { color: rgba(92, 3, 155, .16); transition: color .35s; }
+.word[data-on] { color: var(--purple); }
+.pill {
+  display: inline-block; width: 1.75em; height: .92em; margin: 0 .2em 0 0; vertical-align: -.08em;
+  border-radius: .2em; overflow: hidden; transform: scale(.55); opacity: 0;
+  transition: transform .8s var(--spring), opacity .3s;
+}
+.pill[data-on] { transform: none; opacity: 1; }
+.pill img { width: 100%; height: 100%; object-fit: cover; }

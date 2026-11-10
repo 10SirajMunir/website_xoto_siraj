@@ -1,0 +1,39 @@
+.section { --card: clamp(340px, 30vw, 500px); --intro: clamp(380px, 38vw, 640px); --gap: 20px; position: relative;
+  /* Enough scroll to carry the whole track across, kept in CSS so the page never shifts on load. */
+  height: calc(100svh + var(--intro) + (var(--card) + var(--gap)) * 6 + var(--gutter) * 2 - 100vw);
+}
+.stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; align-items: center; }
+.track { display: flex; align-items: stretch; gap: var(--gap); width: max-content; padding-inline: var(--gutter); will-change: transform; }
+.intro { display: flex; flex-direction: column; justify-content: center; width: var(--intro); padding-right: clamp(24px, 4vw, 72px); }
+.title { margin: 18px 0 20px; font-size: var(--fs-h1); }
+
+.card {
+  position: relative; display: flex; flex-direction: column; width: var(--card); height: min(680px, calc(100svh - 96px));
+  border-radius: var(--r-l); background: var(--tint-purple); overflow: hidden;
+  transition: transform .6s var(--ease), box-shadow .4s;
+}
+.card:hover { transform: translateY(-8px); box-shadow: var(--shadow-l); }
+.media { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+.media img { transition: transform 1.2s var(--ease); }
+.card:hover .media img { transform: scale(1.05); }
+.body { position: relative; padding: 20px 64px 24px 24px; }
+.n { font-size: .78rem; color: var(--ink-2); }
+.body h3 { margin-top: 6px; font-size: var(--fs-h3); line-height: 1.12; letter-spacing: -.025em; font-weight: 500; color: var(--purple); }
+.body p { margin-top: 8px; font-size: .94rem; line-height: 1.4; color: var(--ink-2); }
+.go { position: absolute; right: 20px; bottom: 24px; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--white); color: var(--purple); transition: background-color .25s, color .25s; }
+.card:hover .go { background: var(--purple); color: var(--white); }
+
+@media (max-width: 900px) {
+  .section { height: auto; padding-block: 72px; }
+  .stage { position: relative; height: auto; display: block; overflow: visible; }
+  .track { display: block; width: auto; padding: 0; }
+  .intro { width: auto; padding: 0 var(--gutter) 28px; }
+  .track { overflow: visible; }
+  .card { display: inline-flex; vertical-align: top; }
+}
+@media (max-width: 900px) {
+  .track { display: grid; grid-auto-flow: column; grid-auto-columns: min(80vw, 360px); grid-template-rows: auto auto; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+  .track::-webkit-scrollbar { display: none; }
+  .intro { grid-column: 1 / span 6; grid-row: 1; position: sticky; left: var(--gutter); width: calc(100vw - var(--gutter) * 2); padding: 0 0 16px; }
+  .card { grid-row: 2; width: auto; height: 460px; scroll-snap-align: start; }
+}

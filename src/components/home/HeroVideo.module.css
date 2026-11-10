@@ -1,0 +1,21 @@
+.media { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+/* One group opacity, so the poster and video never stack into a darker image while the video fades in. */
+.layer { position: absolute; inset: 0; opacity: .3; }
+.poster, .video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; }
+.video { opacity: 0; transition: opacity 1.4s ease; }
+.video[data-playing] { opacity: 1; }
+
+/* Washes keep the headline crisp on the left and melt the bottom edge into the next section. */
+.wash {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .9) 0%, rgba(255, 255, 255, .62) 34%, rgba(255, 255, 255, 0) 64%),
+    linear-gradient(180deg, rgba(255, 255, 255, .5) 0%, rgba(255, 255, 255, 0) 22%, rgba(255, 255, 255, 0) 70%, #fff 100%);
+}
+
+@media (max-width: 900px) {
+  .layer { opacity: .26; }
+  .wash {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .8) 42%, rgba(255, 255, 255, .2) 64%, #fff 100%);
+  }
+}
